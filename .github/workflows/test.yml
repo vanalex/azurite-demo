@@ -12,7 +12,8 @@ jobs:
           - 10000:10000
           - 10001:10001
           - 10002:10002
-        options: --privileged --skipApiVersionCheck
+        options: --privileged
+        args: --skipApiVersionCheck
     steps:
       - uses: actions/checkout@v4
       - name: Install uv
