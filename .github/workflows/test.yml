@@ -14,9 +14,11 @@ jobs:
           - 10002:10002
     steps:
       - uses: actions/checkout@v4
+      - name: Install uv
+        run: pip install uv
+      - name: Sync dependencies
+        run: uv sync --extra dev
       - name: Run tests
         env:
           AZURE_STORAGE_CONNECTION_STRING: "UseDevelopmentStorage=true"
-        run: |
-          pip install -r requirements.txt
-          pytest tests/integration/
+        run: uv run pytest tests/
